@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-e&b^1n3d)hsb%ax3ayv%^d5m=)*2q5q5us+duf2+0nh@u373(5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
@@ -67,6 +68,8 @@ MIDDLEWARE = [
 CORS_ORIGIN_ALLOW_ALL = True 
 CORS_ALLOW_CREDENTIALS = True
 
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_USERNAME_REQUIRED = False
@@ -150,11 +153,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static/'),
+)
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'photos/')
 MEDIA_URL = '/photos/photos/'
 

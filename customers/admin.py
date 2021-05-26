@@ -4,6 +4,10 @@ from .models import CustomerAccount, Withdraw, Deposit
 
 # Register your models here.
 
+admin.site.site_header = 'Deunion Reserve'
+admin.site.site_title = 'Deunion Reserve'
+admin.site.index_title = 'Deunion Reserve Bank Admin'
+
 class CustomerAccountAdmin(admin.ModelAdmin):
   list_display = ('id', 'account_number', 'customer', 'available_bal', 'timestamp')
   list_display_links = ('id', 'account_number')
