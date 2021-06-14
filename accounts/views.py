@@ -93,3 +93,11 @@ class ChangePasswordView(generics.UpdateAPIView):
 class UserDataList(generics.ListCreateAPIView):
     queryset = UpdateUser.objects.all()
     serializer_class = UpdateUserSerializer
+
+class UserDataAuth(generics.RetrieveAPIView):
+    permission_classes = [permissions.IsAuthenticated,]
+    queryset = UpdateUser.objects.all()
+    serializer_class = UpdateUserSerializer
+
+    def get_object(self):
+        return self.request.user

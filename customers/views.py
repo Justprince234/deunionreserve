@@ -2,8 +2,8 @@ from django.shortcuts import render
 
 from rest_framework import generics
 
-from .models import CustomerAccount, Withdraw, Deposit
-from .serializers import CustomerAccountSerializer, DepositSerializer, WithdrawSerializer
+from .models import CustomerAccount, Withdraw, Deposit, Transfer
+from .serializers import CustomerAccountSerializer, DepositSerializer, WithdrawSerializer, TransferSerializer
 
 # Create your views here.
 
@@ -18,3 +18,7 @@ class WithdrawList(generics.ListCreateAPIView):
 class DepositList(generics.ListCreateAPIView):
     queryset = Deposit.objects.all()
     serializer_class = DepositSerializer
+
+class TransferList(generics.ListCreateAPIView):
+    queryset = Transfer.objects.all()
+    serializer_class = TransferSerializer
